@@ -75,7 +75,7 @@ serverPort = 6789
 # Assign IP address to socket
 # Bind the socket to server address and server port
 # /* 1. PRIMITIVA BIND DE SOCKETS */
-serverSocket.bind(("", serverPort))
+serverSocket.bind(("192.168.0.106", serverPort))
 
 
 # Listen to at most 1 connection at a time
@@ -90,7 +90,7 @@ while True:
     # Set up a new connection from the client
     connectionSocket, addr = serverSocket.accept()  # Establish the connection
 
-    client_thread = threading.Thread(target=handle_request, args=(connectionSocket,))
+    client_thread = threading.Thread(target=handle_request, args=(connectionSocket, addr))
     client_thread.start()
 
 serverSocket.close()

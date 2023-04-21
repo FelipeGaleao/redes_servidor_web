@@ -17,12 +17,12 @@ import sys  # In order to terminate the program
 serverSocket = socket(AF_INET, SOCK_STREAM)
 
 # Assign a port number
-serverPort = 6789
+serverPort = 6788
 
 # Assign IP address to socket
 # Bind the socket to server address and server port
 # /* 1. PRIMITIVA BIND DE SOCKETS */
-serverSocket.bind(("", serverPort))
+serverSocket.bind(("192.168.0.106", serverPort))
 
 
 # Listen to at most 1 connection at a time
@@ -46,7 +46,6 @@ while True:
 
         # /* 4. PRIMITIVA RECEIVE DE SOCKETS */
         message = connectionSocket.recv(1024).decode()
-        print("Mensagem recebida: ", message)
         print("** Passou o ACCEPT **")
 
         # Extract the path of the requested object from the message
@@ -65,8 +64,6 @@ while True:
         # Send the HTTP response header line to the connection socket
         # /* 5. PRIMITIVA SEND DE SOCKETS */
         connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())
-
-        # Send the content of the requested file to the connection socket
         for i in range(0, len(outputdata)):
             connectionSocket.send(outputdata[i].encode())
         connectionSocket.send("\r\n".encode())
@@ -74,13 +71,18 @@ while True:
         # Close the client connection socket
 
         print("** Fecha Socket de conexão **")
-    except IOError as e:
-        print(e)
-        connectionSocket.send("HTTP/1.1 404 Not Found\r\n\r\n".encode())
-        connectionSocket.send(
-            "<html><head></head><body><h1>404 Not Found</h1></body></html>\r\n".encode()
-        )
-        print("** IO Error **")
         connectionSocket.close()
-    serverSocket.close()
+    except IOError:
+        f = open('not_found.html')
+        # Store the entire content of the requested file in a temporary buffer
+        outputdata = f.read()
+        # Send the HTTP response header line to the connection socket
+        # /* 5. PRIMITIVA SEND DE SOCKETS */
+        connectionSocket.send("HTTP/1.1 404 Not Found\r\n\r\n".encode())
+        for i in range(0, len(outputdata)):
+            connectionSocket.send(outputdata[i].encode())
+        connectionSocket.send("\r\n".encode())
+        print("** Fecha Socket de conexão **")
+        connectionSocket.close()
+serverSocket.close()
 sys.exit()  # Terminate the program after sending the corresponding data
