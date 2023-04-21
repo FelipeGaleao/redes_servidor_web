@@ -1,5 +1,5 @@
-"# redes_servidor_web"
-S
+# redes_servidor_web
+
 Olá! Neste trabalho, nós aprendemos os fundamentos da programação de soquetes para conexões TCP em Python 🐍. Descobrimos:
 
 - Como criar um soquete
