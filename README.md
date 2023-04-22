@@ -1,5 +1,6 @@
 # redes_servidor_web
 
+## Servidor TCP 
 Olá! Neste trabalho, nós aprendemos os fundamentos da programação de soquetes para conexões TCP em Python 🐍. <br>
 Descobrimos:
 
@@ -19,4 +20,18 @@ Nosso servidor é capaz de:
 
 Caso o arquivo não estivesse presente no servidor, nosso servidor envia automaticamente uma mensagem HTTP "404 Not Found" de volta ao cliente ❌.
 
-Foi um grande desafio, mas conseguimos! Esperamos que tenha sido uma experiência enriquecedora e divertida 🚀. Obrigado por ler!
+## Servidor UDP 
+
+To be continued...
+
+## Como executar o projeto?
+Utilize a sequência de comandos abaixo para executar o projeto:
+
+```bash
+# Clone este repositório
+$ git clone
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd redes_servidor_web
+```
+
