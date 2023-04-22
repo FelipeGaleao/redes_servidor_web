@@ -1,6 +1,7 @@
 # redes_servidor_web
 
-Olá! Neste trabalho, nós aprendemos os fundamentos da programação de soquetes para conexões TCP em Python 🐍. Descobrimos:
+Olá! Neste trabalho, nós aprendemos os fundamentos da programação de soquetes para conexões TCP em Python 🐍. <br>
+Descobrimos:
 
 - Como criar um soquete
 - Vinculá-lo a um endereço e porta específicos
